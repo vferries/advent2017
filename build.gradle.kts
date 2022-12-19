@@ -14,10 +14,14 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.9.0")
 }
 
 tasks.test {
     useJUnitPlatform()
+    minHeapSize = "1024m"
+    maxHeapSize = "2048m"
+    jvmArgs = listOf("-XX:MaxPermSize=512m")
 }
 
 tasks.withType<KotlinCompile> {
